@@ -19,9 +19,9 @@ data "template_file" "_port_mapping" {
 $${join(",\n", 
   compact(
     list(
-    host_port == "" || host_port == "__NOT_DEFINED_" ? "" : "$${ jsonencode("hostPort") }: $${host_port}",
-    container_port == "" || container_port == "__NOT_DEFINED_" ? "" : "$${jsonencode("containerPort")}: $${container_port}",
-    protocol == "" || protocol == "__NOT_DEFINED_" ? "" : "$${ jsonencode("protocol") }: $${jsonencode(protocol)}"
+    host_port == "" || host_port == "__NOT_DEFINED__" ? "" : "$${ jsonencode("hostPort") }: $${host_port}",
+    container_port == "" || container_port == "__NOT_DEFINED__" ? "" : "$${jsonencode("containerPort")}: $${container_port}",
+    protocol == "" || protocol == "__NOT_DEFINED__" ? "" : "$${ jsonencode("protocol") }: $${jsonencode(protocol)}"
     )
   )
 )}

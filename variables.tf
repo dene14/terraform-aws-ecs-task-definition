@@ -3,7 +3,7 @@ variable "name" {}
 variable "cpu" { default = 10 }
 
 variable "memory" { default = 512 }
-#variable "memory_reservation" { default =  }
+variable "memory_reservation" { default = "__NOT_DEFINED__" }
 
 variable "links" {
   type = "list"
@@ -39,9 +39,34 @@ variable "port_mappings" {
   ]
 }
 
+variable "ulimits" {
+  type = "list"
+  default = [
+    {
+      "name" = "__NOT_DEFINED__",
+      "softLimit" = "__NOT_DEFINED__",
+      "hardLimit" = "__NOT_DEFINED__"
+    }
+  ]
+}
+
+variable "mount_points" {
+  type = "list"
+  default = [ 
+    {
+      "hostPath" = "__NOT_DEFINED__",
+      "containerPath" = "__NOT_DEFINED__",
+      "readOnly" = "__NOT_DEFINED__"
+    }
+  ]
+}
+
 variable "entrypoint" {default = ""}
 
-variable "cmd" {default = ""}
+variable "cmd" {
+  type = "list"
+  default = []
+}
 
 variable "image" {default = "amazon/amazon-ecs-sample"}
 
